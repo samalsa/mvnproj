@@ -1,0 +1,10 @@
+pipeline{
+    agent any
+    stages{
+        stage("GIT CHECKOUT"){
+            steps{
+                echo "Hello World"
+            }
+        }
+    }
+}

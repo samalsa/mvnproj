@@ -17,9 +17,9 @@ pipeline{
                  sh """
                        scp -o StrictHostKeyChecking=no /root/.jenkins/workspace/project_1/target/myproj.war root@172.31.29.144:/opt/apache-tomcat-9.0.24/webapps/
                        
-                       ssh root@172.31.29.144 /opt/apache-tomcat-9.0.24/shutdown.sh
+                       ssh root@172.31.29.144 shutdown.sh
                        
-                       ssh root@172.31.29.144 /opt/apache-tomcat-9.0.24/startup.sh
+                       ssh root@172.31.29.144 startup.sh
                     """
                }
             }

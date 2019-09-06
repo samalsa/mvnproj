@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage("GIT CHECKOUT"){
             steps{
-                echo "Hello World"
+                git 'https://github.com/amiyaaws/mvnproj.git'
             }
         }
     }

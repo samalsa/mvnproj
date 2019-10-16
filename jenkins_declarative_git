@@ -6,19 +6,21 @@ pipeline{
                 git 'https://github.com/amiyaaws/mvnproj.git'
             }
         }
+        environment {
+                  Windows_EC2="i-0ca42eb226016170d"
+                    
+              }
+
         stage("Maven Build"){
             steps{
               sh "mvn clean compile package"
             }  
         } 
         stage("Deploy"){
-          steps{
-              sshagent(['tomcat']) {
-                 sh """
-                       scp -o StrictHostKeyChecking=no /root/.jenkins/workspace/project_1/target/myproj.war root@172.31.29.144:/opt/apache-tomcat-9.0.24/webapps/
-                                                             
-                    """
-               }
+          steps {
+                   aws ssm send-command --instance-ids "${Windows_EC2}" --document-name "AWS-RunPowerShellScript" --parameters "commands=C:/script/sample.bat 
+                 }
+
             }
         }
     }

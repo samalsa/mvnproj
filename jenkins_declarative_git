@@ -18,7 +18,7 @@ pipeline{
         } 
         stage("Deploy"){
           steps {
-                   aws ssm send-command --instance-ids "${Windows_EC2}" --document-name "AWS-RunPowerShellScript" --parameters "commands=C:/script/sample.bat 
+                   aws ssm send-command --instance-ids "${Windows_EC2}" --document-name "AWS-RunPowerShellScript" --parameters "commands=C:\script\sample.bat 
                  }
 
             }

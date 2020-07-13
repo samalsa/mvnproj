@@ -1,0 +1,20 @@
+pipeline{
+    agent any
+    stages{
+        stage('clone'){
+            steps{
+            sh " rm -rf /root/.jenkins/workspace/pipeline_project/mvnproj "
+        
+            sh " git clone https://github.com/samalsa/mvnproj.git "
+            
+            sh " mvn clean -f mvnproj "
+            
+            sh " mvn test -f mvnproj "
+            
+            sh " mvn compile -f mvnproj "
+            
+            sh " mvn package -f mvnproj "
+            }
+        }
+    }
+}
